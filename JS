@@ -1,0 +1,283 @@
+
+  function entropyPrompt() {
+  var entropy = prompt('Entropy is to add data to help hide your NFT data while being turned into an QRs.');
+   document.getElementById('avy').value = entropy;
+  }
+
+
+  function b64Prompt() {
+   var b64hash = prompt('Paste your Base64 Media hash from your NFT here');
+   if (b64hash.search("base64,") > 0) {
+    document.getElementById('inp').value = b64hash;
+   } else {
+    document.getElementById('inp').value = "data:image/png;base64," + b64hash;
+   }
+  }
+
+function hold(){
+ 
+
+ document.getElementById('buildPIP').style='display:none';
+ document.getElementById('buildPIPmsg').style='display:block;align:center;font-size:250%';
+ 
+  
+ setTimeout(document.getElementById('1st').style="display:none", 3300);
+   
+ setTimeout(document.getElementById('2cd').style="display:block;align:center;font-size:115%;top:0;", 6333);
+   
+ setTimeout(words(), 9630);
+}
+
+  function words() {
+ 
+   
+   document.getElementById('avystore').innerHTML = document.getElementById('avy').value;
+   
+ if(document.getElementById('avystore').innerHTML == ''){
+     document.getElementById('avystore').innerHTML = '|\\~~(\-0-/)~~/|';
+   }
+   
+   document.getElementById('inpstore').innerHTML = document.getElementById('inp').value.replace('data:image/jpeg;base64,', '').replace('data:image/png;base64,', '');
+  
+   const jimmy89 = 'This is the song that never ends. It keeps going on and on my friends. People started signing it not knowing what it was but then people kept on signing it -- just because becasue because [...]';
+  
+  
+ if(document.getElementById('inpstore').innerHTML == ''){
+  
+  document.getElementById('inpstore').innerHTML = btoa(jimmy89);
+  
+   }
+   
+   
+   var avy = document.getElementById('avystore').innerHTML;
+   
+   var fgpt = document.getElementById('inp').value.replace("data:image/png;base64,", "").replace("data:image/jpeg;base64,", "").replace("data:application/image;base64,", "").replace("data:application/octet-stream;base64,", "");
+   
+   var imgCur = fgpt;
+   var jimmy = [];
+   
+   let compressedImg = imgCur.split('').reduce((o, c, d) => {
+    if (o[o.length - 2] === c && o[o.length - 1] < 35) o[o.length - 1]++;
+    else o.push(c, '');
+    if (o[o.length - 3] % d) jimmy.push(d);
+    else jimmy.push(o[o.length - 3]);
+    return o;
+   }, []).map(_ => typeof _ === 'number' ? _.toString(36) : _).join('');
+   
+   var imgCur2 = fgpt;
+   var jim = [];
+   
+   let compressedImg2 = imgCur2.split('').reduce((p, e, t) => {
+    if (p[p.length - 2] === e && p[p.length - 1] < 35) p[p.length - 1]++;
+    else
+     p.push(e, 0);
+    if (p[p.length - 3] % t) jim.push(t);
+    else jim.push(p[p.length - 3]);
+    return p;
+   }, []).map(__ => typeof __ === 'number' ? __.toString(36) : __).join('');
+   
+   var str = compressedImg;
+
+   function findRepeat(str) {
+    const arr = str.split('');
+    const hash = new Map();
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+     if (hash.get(arr[i]) === undefined) {
+      hash.set(arr[i], true);
+     } else {
+      const value = hash.get(arr[i]);
+      if (value) {
+       hash.set(arr[i], !value);
+      }
+     }
+    }
+    hash.forEach((v, k, g) => {
+     if (!v || g)
+      result.push(k);
+    });
+    return result;
+   }  
+   
+   document.getElementById('pub').innerHTML = '3v' + findRepeat(str).join('');
+   document.getElementById('view').innerHTML = '6v' + compressedImg;
+   document.getElementById('priv').innerHTML = '#' + btoa(jimmy.join(''));
+   
+   document.getElementById('pipOutput').innerHTML = document.getElementById('pub').innerHTML;
+   
+   
+splitter(fgpt);
+   
+   var idhash = document.getElementById('pipOutput').innerHTML;
+   
+   document.getElementById('avatar').innerHTML = '<img style="align:left;width:30%" src="' + document.getElementById("inp").value + '"></img>';
+   
+  document.getElementById('outputstuff').style = 'word-break: break-all;display:block;';
+   
+var mkey = "Mv#" + btoa(compressedImg2);   
+   
+document.getElementById('keys').innerText = mkey;
+   
+document.getElementById('keys2').innerText = 'Pub: ' + document.getElementById('pub').innerHTML + ' \n\nView: ' + document.getElementById('view').innerHTML + ' \n\nPriv: ' + document.getElementById('priv').innerHTML + ' \n\nMaster:' + mkey;
+
+  document.getElementById('opAll').style="display:block;align:center;";
+   
+  document.getElementById('2cd').style="display:none";
+   document.getElementById('buildPIP').style="display:none";
+   
+   document.getElementById('buildPIPmsg').style='display:none';
+  }
+
+function getKeys(){
+ document.getElementById('keydown').innerHTML =  document.getElementById('keys2').innerText + '*';
+ 
+ document.getElementById('keydown').href = 'data:text/plain,' + encodeURIComponent(document.getElementById('keys2').innerText);
+ 
+ document.getElementById('keydown').setAttribute("target", "_blank");
+ 
+ 
+}
+
+function getKeys2(){
+ document.getElementById('keymaster').innerHTML =  document.getElementById('keys').innerText + '*';
+ 
+ document.getElementById('keymaster').href =  'data:text/plain,' + encodeURIComponent(document.getElementById('keys').innerText);
+ 
+
+}
+
+
+function restore(){
+ var compressedImgCur1 = document.getElementById('out').value.replace('Mv#', '');
+ var compressedImgCur = atob(compressedImgCur1);
+let decompressedImgCur = compressedImgCur
+  .split('').map((c,i,a)=>i%2?undefined:new Array(2+parseInt(a[i+1],36)).join(c)).join('');
+// document.getElementById('keymake').href = '#';
+ document.getElementById('keymake').innerHTML = decompressedImgCur;
+ 
+ document.getElementById('keymake').href =  'data:application/octet-stream;base64,' + encodeURIComponent(decompressedImgCur);
+ 
+ var haha = "this.href='data:application/octet-stream,'+encodeURIComponent(decompressedImgCur);this.setAttribute('target', '_blank');this.setAttribute('download', 'Reconstatued-NFT.png')";
+ 
+ 
+ document.getElementById('checkavy').innerHTML = '<img align="center" style="width:50%" onclick="'+haha+'" id="recoNFT" src="data:image/png;base64,'+decompressedImgCur+ '"></img><hr>';
+
+}
+
+
+  function splitter(fgpt) {
+   document.getElementById('storage1').innerHTML = fgpt;
+   var hashnum = document.getElementById('storage1').innerHTML.search("#");
+   if (hashnum > 0) {
+    var hashing = document.getElementById('storage1').innerHTML;
+    var hashl = hashing.length;
+    document.getElementById('demo3').innerHTML += "</br><img type='image/png' src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + encodeURIComponent(document.getElementById('storage1').innerHTML.slice(0, hashnum + 1)) + "'></img>";
+    document.getElementById('demo').innerHTML += document.getElementById('storage1').innerHTML.slice(0, hashnum + 2);
+    document.getElementById('storage1').innerHTML = hashing.slice(hashnum + 1, hashl + 1);
+    cutter();
+   } else {
+    document.getElementById('storage1').innerHTML = document.getElementById('inp').value;
+    cutter();
+   }
+  }
+
+  function cutter() {
+   var arr = [],
+    trimmed = [],
+    tooth = 0,
+    toothwidth = document.getElementById('myrange').value;
+   arr = document.getElementById('storage1').innerHTML;
+   if (arr.length > 0) {
+    trimmed = arr;
+    var al = arr.length;
+    document.getElementById('demo3').innerHTML += "<img src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + trimmed.slice(tooth, toothwidth) + "' ></img>";
+    document.getElementById('demo').innerHTML += trimmed.slice(tooth, toothwidth);
+    document.getElementById('storage1').innerHTML = trimmed.slice(toothwidth, al);
+    blade(arr, trimmed, al, tooth, toothwidth);
+   }
+  }
+
+  function blade(arr, trimmed, al, tooth, toothwidth) {
+   arr = document.getElementById('storage1').innerHTML;
+   if (arr.length > 0) {
+    trimmed = arr;
+    al = arr.length;
+    document.getElementById('demo3').innerHTML += "<img src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + trimmed.slice(tooth, toothwidth) + "'></img>";
+    document.getElementById('demo').innerHTML += trimmed.slice(tooth, toothwidth);
+    document.getElementById('storage1').innerHTML = trimmed.slice(toothwidth, al);
+    blade2(arr, trimmed, al, tooth, toothwidth);
+   } else {
+     document.getElementById('demo2').innerHTML += '<a href="' + document.getElementById('demo').innerHTML + '" target="_blank" rel="noopener noreferrer" style="font-size:250%;text-decoration:none;"><b>Teleport<i>!</i></b></a>';
+   }
+  }
+
+  function blade2(arr, trimmed, al, tooth, toothwidth) {
+   arr = document.getElementById('storage1').innerHTML;
+   if (arr.length > 0) {
+    trimmed = arr;
+    al = arr.length;
+    document.getElementById('demo3').innerHTML += "<img src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + trimmed.slice(tooth, toothwidth) + "'></img>";
+    document.getElementById('demo').innerHTML += trimmed.slice(tooth, toothwidth);
+    document.getElementById('storage1').innerHTML = trimmed.slice(toothwidth, al);
+    blade(arr, trimmed, al, tooth, toothwidth);
+   } else {
+    document.getElementById('demo2').innerHTML += '<a href="' + document.getElementById('demo').innerHTML + '" target="_blank" rel="noopener noreferrer" style="font-size:250%;text-decoration:none;"><b>Teleport<i>!</i></b></a>';
+   }
+  }
+  if (window.attachEvent) {
+   observe = function(element, event, handler) {
+    element.attachEvent('on' + event, handler);
+   };
+  } else {
+   observe = function(element, event, handler) {
+    element.addEventListener(event, handler, false);
+   };
+  }
+
+  function handleFileSelect(evt) {
+   evt.stopPropagation();
+   evt.preventDefault();
+   var files = evt.dataTransfer.files; // FileList object.
+   var reader = new FileReader();
+   reader.onload = function(event) {
+    document.getElementById('inp').value = event.target.result;
+   };
+   reader.readAsDataURL(files[0], "UTF-8");
+  }
+
+  function handleFileSelect2(evt) {
+   evt.stopPropagation();
+   evt.preventDefault();
+   var files = evt.dataTransfer.files; // FileList object.
+   var reader = new FileReader();
+   reader.onload = function(event) {
+    document.getElementById('avy').value = event.target.result;
+   };
+   reader.readAsText(files[0], "UTF-8");
+  }
+
+
+  function handleFileSelect4(evt) {
+   evt.stopPropagation();
+   evt.preventDefault();
+   var files = evt.dataTransfer.files; // FileList object.
+   var reader = new FileReader();
+   reader.onload = function(event) {
+    document.getElementById('out').value = event.target.result;
+   };
+   reader.readAsText(files[0], "UTF-8");
+  }
+
+  function handleDragOver(evt) {
+   evt.stopPropagation();
+   evt.preventDefault();
+  }
+  // Setup the dnd listeners.
+  document.getElementById('inp').addEventListener('dragover', handleDragOver, false);
+  document.getElementById('inp').addEventListener('drop', handleFileSelect, false);
+
+  document.getElementById('avy').addEventListener('dragover', handleDragOver, false);
+  document.getElementById('avy').addEventListener('drop', handleFileSelect2, false);
+
+  document.getElementById('out').addEventListener('dragover', handleDragOver, false);
+  document.getElementById('out').addEventListener('drop', handleFileSelect4, false);
