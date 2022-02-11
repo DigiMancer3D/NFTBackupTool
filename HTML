@@ -1,0 +1,144 @@
+<html id="html" style="background-color:black;color:silver;font-size:105%;overflow-x:hidden;  scroll-x:none;x-overflow:hidden; scroll-y:smooth; scroll-behavior: smooth; scroll-behavior: smooth; allow:download;" >
+ 
+  <script src="https://itty.bitty.site/lzma/lzma_worker-min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.3/qrcode.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+ <script src="https://codepen.io/davidshimjs/pen/NdBYrg"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+ <head>
+   <link rel="import" href="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.3/qrcode.min.js"></link>
+ <link rel="import" href="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></link>
+ <link rel="import" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></link>
+ <link  rel="import" href="https://codepen.io/davidshimjs/pen/NdBYrg"></link>
+ <link  rel="import" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></link>
+ <link  rel="import" href="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></link>
+ </head>
+
+<body>
+ <div id="1st" >
+ <p>
+ <h2 align="center" style="font-size:300%;"><b><i>NFT Backup Tool</i></b></h2>
+ </p>
+ <sub>
+  <p align="center" style="margin:-0.3%;padding:0.50%;font-size:125%;">Port your NFT Media offline</p>
+ </sub>
+ <hr>
+ <p align="center">
+  &nbsp; &nbsp; &nbsp;This will allow you to create a series of QRs & recoverable Keys to port your NFT Media off the internet.
+<hr></br></br><p align="center">
+<label><b>Public Address</b> <sub><sup>(<i>This is Used to Create Entropy <sup onclick="entropyPrompt()"><sub><b>?</b></sub></sup></i>)</sup></sub><b>:</b></label>
+  &nbsp;<input id="avy" rows="3" accept="image/*,link" onLoad="handleFileSelect2(evt)" style="width:68%;padding:1.5%;margin:2.5%;text-align:center;background-color:lightgrey;color:black;" placeholder="Drag-Drop | Paste Your Public Key" />
+
+</br>
+</br>
+
+  &nbsp;<label><b>NFT&nbsp;Media</b> <sub><sup>(<i>This is Used to <b>Backup Your NFT</b></i>)</sup></sub><b>:</b></label>
+  <input id="inp" accept="file/*,image/*" onLoad="handleFileSelect(evt)" rows="3" style="width:68%;padding:1.5%;margin:2.5%;text-align:center;background-color:lightgrey;color:black;" placeholder="Drag-Drop Your NFT Media Here"></input>&nbsp; <input type="button" value="Use a Base64 Hash of Your Image Instead" onclick="b64Prompt()" style="width:auto;background-color:black;color:silver;" />
+ </p>
+
+</p>
+ 
+ </br>
+ <hr>
+ </br>
+ <p align="center">
+</br>
+<b>QR Data Size:</b> (<i>larger the data size the less QRs but the <b>less stable the QRs</b> are</i>)</br>
+  <input onLoad="rangeslide()" type="range" min="369" max="963" value="420" class="slider" id="myrange" onchange="document.getElementById('rangeout').innerHTML=this.value" style="align:center;width:85%;color:green;background-color:black;border-radius:25%;border-color:white;margin-left:1.75%;grid:snap;">&nbsp;&nbsp;&nbsp;<span id="rangeout" style="width:10%;" onLoad="document.getElementById('myrange').value=this.innerHTML;">420</span>
+</br> 
+</p>
+ </br>
+</div>
+<div id="2cd" style="display:none;">
+ <h1><b><i>Please Wait...</i></b></h1>
+</div>
+
+ &nbsp;<input type="button" id="buildPIP" value="Backup" onclick="this.style='display:none';hold()" align="center" style="margin-left:40vw;margin-top:-1.5%;margin-bottom:1.5%;font-size:125%;background-color:black;border:1.5px solid silver;color:limegreen;box-shadow: 0px 0px 8px black" /> <p style="display:none;" id="buildPIPmsg">Processing...</p> <input type="button" id="resetbutton" value="&nbsp;Reset&nbsp;HashDApp&nbsp;" onclick="document.location.reload(true);window.scrollTo(0,0);" align="center" style="margin-left:40vw;margin-top:-1.5%;margin-bottom:1.5%;font-size:125%;background-color:red;border:1.5px solid orange;color:black;box-shadow: 0px 0px 8px black;" />&nbsp;
+
+ <span align="center" id="buffer2" style="display:none;"></span>
+ <span id="storage1" style="display:none;"></span>
+ <span id="storage2" style="display:none;"></span>
+ <span id="storage3" style="display:none;"></span>
+ <span id="storage4" style="display:none;"></span>
+
+ <span id="avystore" style="display:none;"></span>
+ <span id="locstore" style="display:none;"></span>
+ <span id="inpstore" style="display:none;"></span>
+ <span id="levelstore" style="display:none;"></span>
+ <span id="view" style="display:none;"></span>
+ <span id="priv" style="display:none;"></span>
+ <span id="pub" style="display:none;"></span>
+ <span id="prep1" style="display:none;"></span> 
+
+
+ </br>
+<div id="opAll" style="display:none;">
+<html style="word-wrap: break-word;scroll-behavior:smooth; scroll-y:smooth; javascript: allow;download:allow;allow:download;">
+ 
+ <span id="demo4" align="center" style="align:center;">
+  <p align="center" style="display:none;" id="outputstuff">
+  <table align="center" style="align:center;width:93.5%">
+   <tr align="center" style="align:center">
+    <td id="avatar"></td>
+   </tr>
+ </table>
+<hr>
+   </p></span><p align="center">
+ <button id="closer" onclick="document.getElementById('demo3').style='display:none';document.getElementById('openr').style='display:block;align:right;width:auto;background-color:black;color:silver';this.style='display:none'" style="width:auto;background-color:black;color:silver;" align="right">Hide Qrs</button>
+    <button id="openr" onclick="document.getElementById('demo3').style='display:block;align:center';document.getElementById('closer').style='display:block;align:right;width:auto;background-color:black;color:silver';this.style='display:none'" style="display:none;width:auto;background-color:black;color:silver;">Show Qrs</button>
+ <div id="demo3" align="center" style="align:center;"></div> <!--qr output-->
+ </p>
+ <span id="demo" align="center" style="display:none;"></span>
+ <span id="demo1" align="center" style="display:none;"></span>
+ <span id="demo2" align="center" style="display:none;"></span>
+ <span id="pipOutput" style="display:none;" align="center"></span>
+ 
+</p>
+
+
+</br></br>
+
+<button id="hidebtn2" align="center" style="display:none;width:auto;background-color:black;color:silver;" onclick="document.getElementById('prekeys2').style='display:block;align:center';document.getElementById('keydown').innerHTML='';document.getElementById('keydown').href='';this.style='display:none;'" >Hide Keys</button>
+<span id="prekeys2" align="center" onclick='this.style="display:none";document.getElementById("prekeys").style="display:block;align:center";document.getElementById("keymaster").innerHTML="";document.getElementById("keymaster").href="";document.getElementById("hidebtn2").style="display:block;align:center;width:auto;background-color:black;color:silver";getKeys()' style="align:center">Reveal Your Key Pairs</span>
+<p align="center"><a id="keydown" style="word-break:break-word;word-wrap:break-word;break-word:word-break;width:94%" target="_blank" download=".NFT_pairs.txt" Content-Disposition="attachment" ></a></p>
+ <span id="keys2" align="center" style="display:none;align:center" ></span>
+
+</br></br>
+<button id="hidebtn" align="center" style="display:none;width:auto;background-color:black;color:silver;" onclick="document.getElementById('prekeys').style='display:block;align:center';document.getElementById('keymaster').innerHTML='';document.getElementById('keymaster').href='';this.style='display:none;'" >Hide Keys</button>
+<span id="prekeys" align="center" onclick='this.style="display:none";document.getElementById("prekeys2").style="display:block;align:center";document.getElementById("keydown").innerHTML="";document.getElementById("keydown").href="";document.getElementById("hidebtn").style="display:block;align:center;width:auto;background-color:black;color:silver";getKeys2()' style="align:center">Reveal Master Key</span>
+<p align="center">
+ <a allow="download" target="_blank" id="keymaster" Content-Disposition="attachment" style="word-break:break-word;word-wrap:break-word;break-word:word-break;width:94%" download=".Mk-NFT_ey.txt" download></a></p>
+ <span id="keys" align="center" style="display:none;align:center" ></span>
+<p align="center"><b><i>Computers & Laptops may need to Right-Click to save.</br></br>Mobile Devices may need to Click-&-Hold to save or open in new window.</i></b></p>
+</div>
+ </br>
+
+ <footer style="bottom:0;">
+  <p align="center" style="text-align:center;">
+   <hr>
+ <a id="reep" onclick="this.style='display:none';document.getElementById('restore').style='display:block;align:center';"><h5 align="center">Click Here to <b>Reconstatue your NFT from its <i>Master Key</i></b></h5></a><div id="restore" style="display:none;" align="center">
+   <button onclick="document.getElementById('reep').style='display:block;align:center;';document.getElementById('restore').style='display:none';document.getElementById('alerted').style='display:block;align:center';" style="width:auto;background-color:black;color:silver;" >Done</button>
+   <input id="out" onLoad="handleFileSelect4(evt)" rows="3" style="width:68%;padding:1.5%;margin:2.5%;text-align:center;background-color:lightgrey;color:black;" placeholder="Drag-Drop or Paste Your Master Key Here"/>&nbsp; <input type="button" value="Reconstatue!" onClick="restore()" style="width:10%;background-color:black;color:silver;" /></br><span id="checkavy"></span></br><a align="center" style="word-break:break-word;word-wrap:break-word;break-word:word-break;width:94%" id="keymake" download=".M-NFT_aster.txt" type="application/octet-stream" download></a><hr></div>
+  <hr>
+<div align="center" style="font-size:125%;color:silver;align:center">
+ <div align="center">
+  <h3 align="center">
+Try Other Useful Hash Tools 
+</h3>
+  <a href="https://3dd.in/HKC" style="margin:0.25%" target="_blank" rel="noopener noreferrer">Hash Key Cutter<i><b>*</b></i></a>
+  <a href="https://3dd.in/HashTeleporter" target="_blank"  style="margin:0.25%" rel="noopener noreferrer">Hash Teleporter<i><b>*</b></i></a>
+
+<a href="https://3dd.in/ppgen" style="margin:0.25%"  target="_blank" rel="noopener noreferrer">PvtPpr Generator<i><b>*</b></i></a><a href="https://3dd.in/NNNcerts" target="_blank" style="margin:0.25%"  rel="noopener noreferrer">NaNoNetwork Certables<i><b>*</b></i></a>
+<a href="https://3dd.in/CSupport" style="margin:0.25%"  target="_blank" rel="noopener noreferrer">Newschain Supports<i><b>*</b></i></a>
+<a href="https://3dd.in/CreateID" style="margin:0.25%" target="_blank" rel="noopener noreferrer">UBCs PIP GEN<i><b>*</b></i></a>
+</div>
+</p><hr>
+<h4 align="center"><b>NFT [Media] Backup Tool (1st edition) Published 2021</br></br><hr></br><a target="_blank" href="https://cointr.ee/3D_" style="text-decoration:none;color:limegreen;">A <i>3Douglas</i> Crafted HashDApp</b><sup><i><b>**</b></i></sup></a></br></br>Inspired by every person that <q><b><i>Right-Click</i> & Save</b>[d]</q> an NFT & <i>NFT <b>Media Rug-Pulls</b></i></h4>
+</p>
+ </footer>
+<hr>
+</body>
+
+</html>
